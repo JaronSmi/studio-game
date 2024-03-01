@@ -25,32 +25,44 @@ class Player
   end
 end
 
-#body
+class Game
+  attr_reader :title
+  attr_accessor :players
+  def initialize(title="")
+    @title = title
+    @players = []
+  end
+
+  def add_player(p)
+    @players.push(p)
+    puts p   
+  end
+
+  def play
+    @players.each do |p|
+      p.blam
+      p.w00t
+      p.blam
+      p.blam
+      puts p
+      puts "".ljust(50,"-")  
+    end
+  end
+end
+
+#Game intro
+puts "WELCOME!\n\n"
+#instantiate players
 player1 = Player.new("moe")
 player2 = Player.new("larry", 60)
 player3 = Player.new("curly", 125)
+#instantiate game
+knuckleheads = Game.new("Knuckleheads")
 
-players = [player1, player2, player3]
-
-puts "There are #{players.length} players in the game."
-
-players.each do |p|
-  puts p
-end
-
-players.each do |p|
-  puts p.health  
-end
-
-players.each do |p|
-  p.blam
-  p.w00t
-  p.blam
-  p.blam
-  puts p  
-end
-
-players.pop
-players.push(Player.new("shemp", 90))
-puts "\n\n"
-puts players
+#add players to game
+knuckleheads.add_player(player1)
+knuckleheads.add_player(player2)
+knuckleheads.add_player(player3)
+puts "".ljust(50,"-")
+#play game
+knuckleheads.play
