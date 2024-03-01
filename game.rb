@@ -6,7 +6,8 @@ class Game
     def initialize(title="")
       @title = title
       @players = []
-      puts "WELCOME TO #{@title.upcase}\n"
+      puts "WELCOME TO #{@title.upcase}"
+      puts "".ljust(50,"-")
     end
   
     def add_player(p)
@@ -20,8 +21,18 @@ class Game
         p.w00t
         p.blam
         p.blam
+        puts "\n"
         puts p
         puts "".ljust(50,"-")  
       end
     end
+  end
+
+  if __FILE__ == $0
+    game = Game.new("GAMES")
+
+    game.add_player(Player.new("Tom", 30))
+    game.add_player(Player.new("Sam", 34))
+
+    game.play
   end
