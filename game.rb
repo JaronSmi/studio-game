@@ -1,4 +1,5 @@
 require_relative "player.rb"
+require_relative "die.rb"
 
 class Game
     attr_reader :title
@@ -16,14 +17,24 @@ class Game
     end
   
     def play
+      puts "There are #{@players.size} players in #{@title}: "
+      @players.each do |player|
+        puts player
+      end
+
       @players.each do |p|
-        p.blam
-        p.w00t
-        p.blam
-        p.blam
-        puts "\n"
+        die = Die.new
+        number_rolled = die.roll
+
+        if number_rolled < 3
+          p.blam
+        elsif number_rolled < 5
+          puts "#{p.name} was skipped"
+        else
+          p.w00t
+        end
+
         puts p
-        puts "".ljust(50,"-")  
       end
     end
   end
