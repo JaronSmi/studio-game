@@ -1,4 +1,5 @@
 require_relative "player.rb"
+require_relative "game_turn.rb"
 require_relative "die.rb"
 
 class Game
@@ -19,22 +20,8 @@ class Game
     def play
       puts "There are #{@players.size} players in #{@title}: "
       @players.each do |player|
+        GameTurn.take_turn(player)
         puts player
-      end
-
-      @players.each do |p|
-        die = Die.new
-        number_rolled = die.roll
-
-        if number_rolled < 3
-          p.blam
-        elsif number_rolled < 5
-          puts "#{p.name} was skipped"
-        else
-          p.w00t
-        end
-
-        puts p
       end
     end
   end
