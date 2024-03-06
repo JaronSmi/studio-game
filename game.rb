@@ -27,6 +27,20 @@ class Game
         end
       end
     end
+
+    def print_stats
+      strong_players, weak_players = @players.partition {|p| p.strong?}
+      puts "\n#{@title} Statistices:"
+      puts "Strong players:\n"
+      strong_players.each do |player|
+        puts "#{player.name} (#{player.health})"
+      end
+      puts "Weak players:\n"
+      weak_players.each do |player|
+        puts "#{player.name} (#{player.health})"
+      end
+    end
+
   end
 
   if __FILE__ == $0

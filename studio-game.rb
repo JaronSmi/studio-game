@@ -14,3 +14,4 @@ knuckleheads.add_player(player3)
 puts "".ljust(50,"-")
 #play game
 knuckleheads.play(3)
+knuckleheads.print_stats
