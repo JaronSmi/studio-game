@@ -17,11 +17,14 @@ class Game
       puts p   
     end
   
-    def play
+    def play(rounds)
       puts "There are #{@players.size} players in #{@title}: "
-      @players.each do |player|
-        GameTurn.take_turn(player)
-        puts player
+      1.upto(rounds) do |round|
+        puts "\nRound # #{round}:"
+        @players.each do |player|
+          GameTurn.take_turn(player)
+          puts player
+        end
       end
     end
   end
@@ -32,5 +35,5 @@ class Game
     game.add_player(Player.new("Tom", 30))
     game.add_player(Player.new("Sam", 34))
 
-    game.play
+    game.play(2)
   end

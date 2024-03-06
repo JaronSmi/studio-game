@@ -13,4 +13,4 @@ knuckleheads.add_player(player2)
 knuckleheads.add_player(player3)
 puts "".ljust(50,"-")
 #play game
-knuckleheads.play
+knuckleheads.play(3)
