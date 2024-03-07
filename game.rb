@@ -1,6 +1,5 @@
 require_relative "player.rb"
 require_relative "game_turn.rb"
-require_relative "die.rb"
 require_relative "treasure_trove.rb"
 
 class Game
@@ -20,10 +19,12 @@ class Game
   
     def play(rounds)
       print_treasure_trove
+
       puts "\nThere are #{@players.size} players in #{@title}: "
       @players.each do |player|
         print_name_and_health(player)
       end
+
       1.upto(rounds) do |round|
         puts "\nRound # #{round}:"
         @players.each do |player|
@@ -65,7 +66,6 @@ class Game
         puts "#{player.name}".ljust(20, '.') + "#{player.score}"
       end
     end
-
   end
 
   if __FILE__ == $0
