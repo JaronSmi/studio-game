@@ -1,3 +1,5 @@
+require_relative 'treasure_trove.rb'
+
 class Player
     attr_reader :health
     attr_accessor :name
@@ -31,7 +33,16 @@ class Player
   def to_s
     "I'm #{@name} with a health of #{@health} and a score of #{score}"
   end
+
+  def found_treasure
+    
+  end
+
+  def points
+    
+  end
 end
+
 
 if __FILE__ == $0
   player = Player.new("moe")
