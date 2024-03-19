@@ -26,14 +26,14 @@ class Player
   end
 
   def points
-    @found_treasures.points.reduce(0, :+)
+    @found_treasures.values.reduce(0, :+)
   end
 
   def strong?
     @health > 100
   end
 
-  def found_treasure(tresure)
+  def found_treasure(treasure)
     @found_treasures[treasure.name] += treasure.points
     puts "#{@name} found a #{treasure.name} worth #{treasure.points} points."
     puts "#{@name}'s treasures: #{@found_treasures}"
