@@ -8,9 +8,11 @@ player3 = Player.new("curly", 125)
 knuckleheads = Game.new("Knuckleheads")
 
 #add players to game
-knuckleheads.add_player(player1)
-knuckleheads.add_player(player2)
-knuckleheads.add_player(player3)
+# knuckleheads.add_player(player1)
+# knuckleheads.add_player(player2)
+# knuckleheads.add_player(player3)
+knuckleheads.load_players("players.csv")
+
 puts "".ljust(50,"-")
 #play game
 loop do

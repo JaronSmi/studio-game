@@ -11,6 +11,14 @@ class Game
       puts "WELCOME TO #{@title.upcase}"
       puts "".ljust(50,"-")
     end
+
+    def load_players(from_file)
+      File.readlines(from_file).each do |line|
+        name, health = line.split(',')
+        p = Player.new(name, Integer(health))
+        add_player(p)
+      end    
+    end
   
     def add_player(p)
       @players.push(p)
