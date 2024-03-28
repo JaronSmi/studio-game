@@ -18,6 +18,7 @@ loop do
         knuckleheads.play(answer.to_i)
     when "quit", "exit"
         knuckleheads.print_stats
+        knuckleheads.save_high_scores
         break
     else
         puts "Please enter a number or 'quit'."
