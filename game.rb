@@ -14,10 +14,8 @@ class Game
 
     def load_players(from_file)
       File.readlines(from_file).each do |line|
-        name, health = line.split(',')
-        p = Player.new(name, Integer(health))
-        add_player(p)
-      end    
+        add_player(Player.from_csv(line))
+      end
     end
   
     def add_player(p)
@@ -54,6 +52,11 @@ class Game
       puts "#{player.name} (#{player.health})"
     end
 
+    def high_score_entry(player)
+      formatted_name = player.name.ljust(20, '.') 
+      "#{formatted_name}" + "#{player.score}"
+    end
+
     def print_stats
       strong_players, weak_players = @players.partition {|p| p.strong?}
     
@@ -79,7 +82,7 @@ class Game
 
       puts "\n#{@title} High Scores:"
       @players.sort.each do |player|
-        puts "#{player.name}".ljust(20, '.') + "#{player.score}"
+        puts high_score_entry(player)
       end
     end
 
@@ -87,7 +90,7 @@ class Game
       File.open(to_file, "w") do |file|
         file.puts "#{@title} High Scores:"
         @players.sort.each do |player|
-          file.puts "#{player.name}".ljust(20, '.') + "#{player.score}"
+          file.puts high_score_entry(player)
         end
       end
     end
