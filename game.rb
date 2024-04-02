@@ -22,6 +22,10 @@ class Game
       @players.push(p)
       puts p   
     end
+
+    def total_points
+      @players.reduce(0) { |sum, player| sum + player.points }
+    end
   
     def play(rounds)
       print_treasure_trove
